@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Homestuck Ship Generator</title>
+</head>
+
+<body>
+	<style>
+		body {
+			background-color: #D6D6D3;
+			font-family: helvetica;
+			font-size: 100%;
+			text-align: center;
+		}
+
+		h1 {
+			color: #c10101;
+			font-size: 2.5em
+		}
+
+		p {
+			color: black;
+			font-size: 1.5em;
+		}
+
+		input[type="text"] {
+			font-size: 1em;
+		}
+
+		input[type="submit"] {
+			font-size: 1.5em;
+		}
+	</style>
+
+	<h1>Homestuck Ship Generator</h1>
+	<form id="friend_names" action="" method="get">
+		<p>Please enter the name of two friends.</p>
+		<input type="text" id="friend1" name="friend1" size="20" value="Friend 1" />
+		<br />
+		<input type="text" id="friend2" name="friend2" size="20" value="Friend 2" />
+		<br />
+		<input type="submit" value="Ship me!" />
+	</form>
+
+	<script type="text/javascript" src="jquery-2.0.3.js">
+	</script>
+
+	<script type="text/javascript" src="RelationshipChooser.js">
+	</script>
+
+</body>
+
+</html>
