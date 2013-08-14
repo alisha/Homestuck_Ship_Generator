@@ -22,7 +22,7 @@ function randomizeNames () {
 
 //Randomly determines the type of relationship the user will have
 function determineRelationship () {
-	var typeIndex = 5;
+	var typeIndex = Math.floor(Math.random()*relationshipTypes.length);
 	if (typeIndex != 5) {
 		relationship = relationshipTypes[typeIndex];
 		if (typeIndex === 3) {
@@ -43,6 +43,7 @@ function determineLeprechaunRelationship () {
 	for (var count = numRelationships; count > 0; count--) {
 		//Randomly pick type from above array
 		var index = Math.floor(Math.random()*leprechaunTypes.length);
+		console.log(index + " is " + leprechaunTypes[index]);
 		relationship += leprechaunTypes[index];
 
 		//Formatting for the report
@@ -52,17 +53,23 @@ function determineLeprechaunRelationship () {
 				if (count === 2) {
 					relationship += "and ";
 				}
-			} else if (numRelationships === 2 && count != 1) {
-				relationship += " and ";
+				if (numRelationships === 2 && count === 2) {
+					relationship += " and ";
+				}
 			}
 		}
 		
 		//Remove relationship from array
 		var updatedArray = leprechaunTypes.splice(0, index);
-		leprechaunTypes.splice(1, leprechaunTypes.length);
-		updatedArray.concat(leprechaunTypes);
-		leprechaunTypes = updatedArray;
+		console.log(updatedArray);
+		leprechaunTypes = leprechaunTypes.splice(1, leprechaunTypes.length);
+		console.log(leprechaunTypes);
+		var finalArray = updatedArray.concat(leprechaunTypes);
+		console.log(finalArray);
+		leprechaunTypes = finalArray;
+		console.log(leprechaunTypes);
 	}
+	relationship += " relationship";
 }
 
 function reportResults () {
@@ -71,7 +78,12 @@ function reportResults () {
 		report += " and " + name2;
 	}
 	report += ".";
-	document.write(report);
+
+	var textNodeReport = document.createTextNode(report);
+	var reportElement = document.createElement("p");
+	reportElement.appendChild(textNodeReport);
+	var theBody = document.getElementsByTagName('body')[0];
+	theBody.appendChild(reportElement);
 }
 
 $('#friend_names').submit(function() {
@@ -80,5 +92,6 @@ $('#friend_names').submit(function() {
 	randomizeNames();
 	determineRelationship();
 	reportResults();
+	relationship = "";
 	return false;
 });
