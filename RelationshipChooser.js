@@ -1,12 +1,9 @@
 //Alisha Ukani
 //github.com/alishau
 
-//Names of user's friends
-$('friend_names').submit(function() {
-	var name1 = $("#friend1").val();
-	var name2 = $("#friend2").val();
-});
-
+//Placeholders for names, updated with user input later
+var name1 = "";
+var name2 = "";
 //Necessary for auspisticism
 var needsThirdPerson = false;
 //Eventual relationship between user and friends
@@ -72,5 +69,10 @@ var reportResults () {
 	document.write(report);
 }
 
-determineRelationship();
-reportResults();
+$('#friend_names').submit(function() {
+	name1 = $("#friend1").val();
+	name2 = $("#friend2").val();
+
+	determineRelationship();
+	reportResults();
+});
