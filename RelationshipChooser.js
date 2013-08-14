@@ -10,6 +10,8 @@ var needsThirdPerson = false;
 var relationship = "";
 //Types of relationships the user can have
 var relationshipTypes = ["matespritship", "auspisticism", "moirallegiance", "kismesissitude", "human romance", "leprechaun"];
+//Checks to see if the user is clicking again
+var hasClicked = false;
 
 //Randomly chooses which name to use
 function randomizeNames () {
@@ -53,10 +55,9 @@ function determineLeprechaunRelationship () {
 				if (count === 2) {
 					relationship += "and ";
 				}
-				if (numRelationships === 2 && count === 2) {
-					relationship += " and ";
-				}
 			}
+		} else if (numRelationships === 2 && count === 2) {
+			relationship += " and ";
 		}
 		
 		//Remove relationship from array
@@ -91,7 +92,13 @@ $('#friend_names').submit(function() {
 	name2 = $("#friend2").val();
 	randomizeNames();
 	determineRelationship();
+
+	if (hasClicked) {
+		document.body.removeChild(document.body.getElementsByTagName("p")[1]);
+	}
+
 	reportResults();
 	relationship = "";
+	hasClicked = true;
 	return false;
 });
