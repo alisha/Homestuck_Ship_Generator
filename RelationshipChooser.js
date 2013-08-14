@@ -74,7 +74,7 @@ function determineLeprechaunRelationship () {
 }
 
 function reportResults () {
-	var report = "You are in a " + relationship + " with " + name1;
+	var report = "You have a " + relationship + " with " + name1;
 	if (relationship === "auspisticism") {
 		report += " and " + name2;
 	}
