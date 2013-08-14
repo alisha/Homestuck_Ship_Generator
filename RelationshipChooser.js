@@ -11,8 +11,17 @@ var relationship = "";
 //Types of relationships the user can have
 var relationshipTypes = ["matespritship", "auspisticism", "moirallegiance", "kismesissitude", "human romance", "leprechaun"];
 
+//Randomly chooses which name to use
+function randomizeNames () {
+	if (Math.random() < 0.5) {
+		var temp = name1;
+		name1 = name2;
+		name2 = temp;
+	}
+}
+
 //Randomly determines the type of relationship the user will have
-var determineRelationship = function () {
+function determineRelationship () {
 	var typeIndex = 5;
 	if (typeIndex != 5) {
 		relationship = relationshipTypes[typeIndex];
@@ -25,20 +34,16 @@ var determineRelationship = function () {
 }
 
 //Randomly determines the type of leprechaun relationship the user will have
-var determineLeprechaunRelationship = function () {
+function determineLeprechaunRelationship () {
 	//Leprechuan relationship types
 	var leprechaunTypes = ["heart", "moon", "star", "clover", "diamond", "horseshoe", "balloon", "rainbow", "pot of gold"];
 	//Leprechaun relationships can involve multiple types from the above array
 	var numRelationships = Math.floor((Math.random()*4) + 1);
-	document.write("The number of leprechaun relationships you have is: " + numRelationships);
 
-	for (var count = numRelationships; count > 0; count++) {
+	for (var count = numRelationships; count > 0; count--) {
 		//Randomly pick type from above array
-		document.write(leprechaunTypes.length);
 		var index = Math.floor(Math.random()*leprechaunTypes.length);
-		document.write(index);
 		relationship += leprechaunTypes[index];
-		document.write(leprechaunTypes[index]);
 
 		//Formatting for the report
 		if (numRelationships > 2) {
@@ -60,7 +65,7 @@ var determineLeprechaunRelationship = function () {
 	}
 }
 
-var reportResults () {
+function reportResults () {
 	var report = "You are in a " + relationship + " with " + name1;
 	if (relationship === "auspisticism") {
 		report += " and " + name2;
@@ -72,7 +77,7 @@ var reportResults () {
 $('#friend_names').submit(function() {
 	name1 = $("#friend1").val();
 	name2 = $("#friend2").val();
-
+	randomizeNames();
 	determineRelationship();
 	reportResults();
 	return false;
