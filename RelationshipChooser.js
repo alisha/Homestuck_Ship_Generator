@@ -75,4 +75,5 @@ $('#friend_names').submit(function() {
 
 	determineRelationship();
 	reportResults();
+	return false;
 });
