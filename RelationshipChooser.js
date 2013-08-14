@@ -2,9 +2,11 @@
 //github.com/alishau
 
 //Names of user's friends
+$('friend_names').submit(function() {
+	var name1 = $("#friend1").val();
+	var name2 = $("#friend2").val();
+});
 
-var name1 = $("#friend1").val();
-var name2 = $("#friend2").val();
 //Necessary for auspisticism
 var needsThirdPerson = false;
 //Eventual relationship between user and friends
